@@ -54,12 +54,13 @@ class InterviewsController < ApplicationController
     
     
     if @pass == 1
-      @interview = Interview.update(start_time: @start_time,end_time: @end_time)
+      @interview = Interview.find(params[:id])
+      @interview.update(start_time: @start_time, end_time: @end_time)
+      InterviewParticipant.where(interview_id: @interview.id).destroy_all
       participants.each do |participant|
-        interview_participants = InterviewParticipant.where(interview_id: params[:id]).update(participant_id: participant)
+        InterviewParticipant.create(interview_id: @interview.id, participant_id: participant)
         @participantt = Participant.where(id: participant).first
-        InterviewMailer.reminder_send(@participantt).deliver_now
-        # InterviewParticipantMailer.welcome_email(interview_participants).deliver_now
+        InterviewMailer.reminder_send(@participantt).deliver_now if @participantt
       end
       puts(@pass)
       redirect_to interview_url(@interview.id)
