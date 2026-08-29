@@ -19,7 +19,6 @@ A Ruby on Rails application for creating, viewing, updating, and coordinating in
 - [Known limitations](#known-limitations)
 - [Development roadmap](#development-roadmap)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Overview
 
@@ -295,7 +294,3 @@ Keep pull requests small and focused:
 4. Run the focused tests and then the complete suite.
 5. Explain the problem, solution, and verification in the pull request.
 6. Avoid mixing dependency upgrades, refactors, and product features in one change.
-
-## License
-
-No repository-level license has been declared yet. Add a license file before distributing or reusing the project outside its intended context.
